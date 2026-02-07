@@ -1,0 +1,19 @@
+package com.danichagas.user_registration.business;
+
+import com.danichagas.user_registration.infrastructure.entities.User;
+import com.danichagas.user_registration.infrastructure.repository.UserRepository;
+import org.springframework.stereotype.Service;
+
+@Service
+public class UserService {
+
+    private final UserRepository repository;
+
+    public UserService(UserRepository repository) {
+        this.repository = repository;
+    }
+
+    public void registerUser(User user) {
+        repository.saveAndFlush(user);
+    }
+}
