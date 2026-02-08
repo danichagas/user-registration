@@ -25,5 +25,9 @@ public class UserService {
         );
     }
 
+    public void deleteUserById(UUID id) {
+        repository.deleteById(id);
+    }
+
 
 }
