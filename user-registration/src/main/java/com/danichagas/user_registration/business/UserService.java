@@ -29,5 +29,14 @@ public class UserService {
         repository.deleteById(id);
     }
 
+    public void updateUserByID(UUID id, User user) {
+        User userEntity = repository.findById(id).orElseThrow();
+        User userUpdated = User.builder()
+                .id(userEntity.getId())
+                .email(user.getEmail() != null ? user.getEmail() : userEntity.getEmail())
+                .name(user.getName() != null ? user.getName() : userEntity.getName())
+                .build();
+        repository.saveAndFlush(userUpdated);
+    }
 
 }
