@@ -15,7 +15,7 @@ public class UserService {
         this.repository = repository;
     }
 
-    public void registerUser(User user) {
+    public void createUser(User user) {
         repository.saveAndFlush(user);
     }
 
