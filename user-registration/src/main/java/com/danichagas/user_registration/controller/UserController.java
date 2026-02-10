@@ -4,10 +4,9 @@ import com.danichagas.user_registration.business.UserService;
 import com.danichagas.user_registration.infrastructure.entities.User;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.UUID;
 
 @RestController
 @RequestMapping("/user")
@@ -21,4 +20,11 @@ public class UserController {
         userService.createUser(user);
         return ResponseEntity.ok().build();
     }
+
+    @GetMapping
+    public ResponseEntity<User> findById(@RequestParam UUID id) {
+        return ResponseEntity.ok(userService.searchUserById(id));
+    }
+
+
 }
