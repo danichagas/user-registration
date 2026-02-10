@@ -26,5 +26,10 @@ public class UserController {
         return ResponseEntity.ok(userService.searchUserById(id));
     }
 
+    @DeleteMapping
+    public ResponseEntity<Void> deleteUserById(@RequestParam UUID id) {
+        userService.deleteUserById(id);
+        return ResponseEntity.ok().build();
+    }
 
 }
