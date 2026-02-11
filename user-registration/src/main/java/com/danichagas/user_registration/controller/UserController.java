@@ -32,4 +32,10 @@ public class UserController {
         return ResponseEntity.ok().build();
     }
 
+    @PutMapping
+    public ResponseEntity<Void> updateUserById(@RequestParam UUID id, @RequestBody User user) {
+        userService.updateUserByID(id, user);
+        return ResponseEntity.ok().build();
+    }
+
 }
